@@ -65,13 +65,20 @@ class Main {
         }
         throw new IllegalArgumentException("throws Exception"); //исключаем римские числа не входящие  диапазон
     }
-
-    private static String convertToRoman(int number) {
-        if (number < 1 || number > 10) {
-            throw new IllegalArgumentException("throws Exception"); //диапазон от 1 до 10
+    private static String convertToRoman(int number){      // Перевод араб в рим
+        String result = "";
+        int value = 0;
+        int[] arab = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        for (int i = 0; i < arab.length; i++){
+            value = number / arab[i];
+            for (int j = 0; j < value; j++){
+                result = result.concat(roman[i]);
+            }
+            number = number % arab[i];
         }
-        return ROMAN[number - 1];
-    }
+        return result;
+        }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
