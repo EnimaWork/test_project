@@ -67,6 +67,9 @@ class Main {
     }
     private static String convertToRoman(int number){      // Перевод араб в рим
         String result = "";
+        if (number <= 0) {
+            throw new IllegalArgumentException("throws Exception"); //исключение 0 и отрицательных чисел для результата в римском формате
+            }
         int value = 0;
         int[] arab = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -75,8 +78,10 @@ class Main {
             for (int j = 0; j < value; j++){
                 result = result.concat(roman[i]);
             }
+
             number = number % arab[i];
         }
+
         return result;
         }
 
